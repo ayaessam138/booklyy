@@ -1,6 +1,9 @@
+import 'package:booklyy/constants.dart';
 import 'package:booklyy/core/utilts/asset.dart';
+import 'package:booklyy/features/home/persentation/views/home_view.dart';
 import 'package:booklyy/features/splash/persentation/view/widgets/slidingsplashtext.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class splasscreenbody extends StatefulWidget {
   splasscreenbody({Key? key}) : super(key: key);
@@ -16,12 +19,8 @@ class _splasscreenbodyState extends State<splasscreenbody>
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: const Duration(minutes: 1));
-
-    slidinganimation =
-        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
-            .animate(animationController);
+    initslidingAnimation();
+    NavToHome();
   }
 
   @override
@@ -42,5 +41,21 @@ class _splasscreenbodyState extends State<splasscreenbody>
         ],
       ),
     );
+  }
+
+  void initslidingAnimation() {
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(minutes: 1));
+
+    slidinganimation =
+        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
+            .animate(animationController);
+  }
+
+  void NavToHome() {
+    Future.delayed(Duration(seconds: 2), () {
+      Get.to(homwview(),
+          transition: Transition.fade, duration: ktransationduration);
+    });
   }
 }
