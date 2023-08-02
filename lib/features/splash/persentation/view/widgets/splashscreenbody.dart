@@ -9,7 +9,13 @@ class splasscreenbody extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [Image.asset(assetdata.logo)],
+        children: [
+          Image.asset(assetdata.logo),
+          Text(
+            'Read Books for free',
+            textAlign: TextAlign.center,
+          )
+        ],
       ),
     );
   }
