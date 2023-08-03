@@ -9,8 +9,9 @@ class custtoumlistviewitem extends StatelessWidget {
       child: Container(
         height: 100,
         width: 100,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            image: const DecorationImage(
                 image: AssetImage(assetdata.test), fit: BoxFit.fill)),
       ),
     );
