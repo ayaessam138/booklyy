@@ -1,9 +1,10 @@
 import 'package:booklyy/constants.dart';
+import 'package:booklyy/core/utilts/app_routes.dart';
 import 'package:booklyy/core/utilts/asset.dart';
 import 'package:booklyy/features/home/persentation/views/home_view.dart';
 import 'package:booklyy/features/splash/persentation/view/widgets/slidingsplashtext.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class splasscreenbody extends StatefulWidget {
   splasscreenbody({Key? key}) : super(key: key);
@@ -54,8 +55,9 @@ class _splasscreenbodyState extends State<splasscreenbody>
 
   void NavToHome() {
     Future.delayed(Duration(seconds: 2), () {
-      Get.to(homwview(),
-          transition: Transition.fade, duration: ktransationduration);
+      // Get.to(homwview(),
+      //     transition: Transition.fade, duration: ktransationduration);
+      GoRouter.of(context).push(approutes.khomeview);
     });
   }
 }
