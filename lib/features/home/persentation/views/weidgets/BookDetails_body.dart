@@ -1,7 +1,10 @@
 import 'package:booklyy/core/utilts/styles.dart';
+import 'package:booklyy/features/home/persentation/views/weidgets/bookaction.dart';
 import 'package:booklyy/features/home/persentation/views/weidgets/bookdetailsappbar.dart';
+import 'package:booklyy/features/home/persentation/views/weidgets/bookdetailslistview.dart';
 import 'package:booklyy/features/home/persentation/views/weidgets/bookrating.dart';
 import 'package:booklyy/features/home/persentation/views/weidgets/custombookinmageitem.dart';
+import 'package:booklyy/features/home/persentation/views/weidgets/custombutton.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsBody extends StatelessWidget {
@@ -40,7 +43,24 @@ class BookDetailsBody extends StatelessWidget {
           ),
           bookrating(
             mainAxisAlignment: MainAxisAlignment.center,
-          )
+          ),
+          const SizedBox(
+            height: 37,
+          ),
+          bookaction(),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text('You Can Also Like this',
+                style:
+                    styles.textstyle14.copyWith(fontWeight: FontWeight.w600)),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          bookdetailslistview(),
+          const SizedBox(
+            height: 40,
+          ),
         ],
       ),
     );
