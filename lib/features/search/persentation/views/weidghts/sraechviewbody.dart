@@ -9,12 +9,13 @@ class sraechviewbody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           serarchtextfield(),
           const SizedBox(
             height: 16,
           ),
-          Text(
+          const Text(
             'Sreach Result',
             style: styles.textstyle18,
           ),
