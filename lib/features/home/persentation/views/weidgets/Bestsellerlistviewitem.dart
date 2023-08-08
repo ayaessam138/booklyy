@@ -1,11 +1,15 @@
 import 'package:booklyy/core/utilts/app_routes.dart';
 import 'package:booklyy/core/utilts/asset.dart';
 import 'package:booklyy/core/utilts/styles.dart';
+import 'package:booklyy/features/home/data/models/bookmodel/bookmodel.dart';
 import 'package:booklyy/features/home/persentation/views/weidgets/bookrating.dart';
+import 'package:booklyy/features/home/persentation/views/weidgets/custombookinmageitem.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class Bestsellerlistviewitem extends StatelessWidget {
+  Bestsellerlistviewitem({required this.bookmodel});
+  final Bookmodel bookmodel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,18 +20,20 @@ class Bestsellerlistviewitem extends StatelessWidget {
         height: 125,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2.5 / 4,
-              child: Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.red,
-                    image: const DecorationImage(
-                        image: AssetImage(assetdata.test), fit: BoxFit.fill)),
-              ),
-            ),
+            custombookinmageitem(
+                imageurl: bookmodel.volumeInfo.imageLinks.thumbnail),
+            // AspectRatio(
+            //   aspectRatio: 2.5 / 4,
+            //   child: Container(
+            //     height: 100,
+            //     width: 100,
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(8),
+            //         color: Colors.red,
+            //         image: const DecorationImage(
+            //             image: AssetImage(assetdata.test), fit: BoxFit.fill)),
+            //   ),
+            // ),
             const SizedBox(
               width: 30,
             ),
@@ -37,16 +43,16 @@ class Bestsellerlistviewitem extends StatelessWidget {
                 children: [
                   SizedBox(
                       width: MediaQuery.of(context).size.width * .5,
-                      child: const Text(
-                        'Harry Poter and the Goblet of  Fire',
+                      child: Text(
+                        bookmodel.volumeInfo.title!,
                         style: styles.textstyle20,
                         maxLines: 2,
                       )),
                   const SizedBox(
                     height: 3,
                   ),
-                  const Text(
-                    'J.K. Rowling',
+                  Text(
+                    bookmodel.volumeInfo.authors![0],
                     style: styles.textstyle14,
                   ),
                   const SizedBox(
@@ -55,12 +61,14 @@ class Bestsellerlistviewitem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '19.99 ',
+                        'Free ',
                         style: styles.textstyle20
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       const Spacer(),
-                      bookrating()
+                      bookrating(
+                        rating: bookmodel.volumeInfo.maturityRating!,
+                      )
                     ],
                   ),
                 ],
