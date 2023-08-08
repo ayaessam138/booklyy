@@ -2,6 +2,8 @@ import 'package:booklyy/core/utilts/asset.dart';
 import 'package:flutter/material.dart';
 
 class custombookinmageitem extends StatelessWidget {
+  custombookinmageitem({required this.imageurl});
+  String imageurl;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -12,8 +14,8 @@ class custombookinmageitem extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.red,
             borderRadius: BorderRadius.circular(16),
-            image: const DecorationImage(
-                image: AssetImage(assetdata.test), fit: BoxFit.fill)),
+            image: DecorationImage(
+                image: NetworkImage(imageurl), fit: BoxFit.fill)),
       ),
     );
   }
