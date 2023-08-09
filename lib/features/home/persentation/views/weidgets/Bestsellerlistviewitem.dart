@@ -21,7 +21,7 @@ class Bestsellerlistviewitem extends StatelessWidget {
         child: Row(
           children: [
             custombookinmageitem(
-                imageurl: bookmodel.volumeInfo.imageLinks.thumbnail),
+                imageurl: bookmodel.volumeInfo.imageLinks?.thumbnail ?? ''),
             // AspectRatio(
             //   aspectRatio: 2.5 / 4,
             //   child: Container(

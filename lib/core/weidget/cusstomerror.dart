@@ -6,9 +6,11 @@ class custoumerrorweidget extends StatelessWidget {
   custoumerrorweidget({required this.Errormessage});
   @override
   Widget build(BuildContext context) {
-    return Text(
-      Errormessage,
-      style: styles.textstyle18,
+    return Center(
+      child: Text(
+        Errormessage,
+        style: styles.textstyle18,
+      ),
     );
   }
 }
