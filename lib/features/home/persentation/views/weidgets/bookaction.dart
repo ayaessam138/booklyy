@@ -1,7 +1,14 @@
+import 'package:booklyy/features/home/data/models/bookmodel/bookmodel.dart';
 import 'package:booklyy/features/home/persentation/views/weidgets/custombutton.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../../core/utilts/functions/launchurl.dart';
 
 class bookaction extends StatelessWidget {
+  final Bookmodel bookmodel;
+
+  const bookaction({super.key, required this.bookmodel});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,17 +27,28 @@ class bookaction extends StatelessWidget {
           ),
           Expanded(
             child: custombutton(
+              onpressed: () async {
+                launchCustomUr(context, 'bookModel.volumeInfo.previewLink');
+              },
               fontsize: 16,
               backgroundcolor: Color.fromARGB(255, 243, 89, 6),
               textcolor: Colors.white,
               borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(16),
                   bottomRight: Radius.circular(16)),
-              text: 'Free Preview',
+              text: gettext(bookmodel),
             ),
           )
         ],
       ),
     );
+  }
+
+  String gettext(Bookmodel bookmodel) {
+    if (bookmodel.volumeInfo.previewLink == null) {
+      return 'Not Avaliable';
+    } else {
+      return 'Preview';
+    }
   }
 }
