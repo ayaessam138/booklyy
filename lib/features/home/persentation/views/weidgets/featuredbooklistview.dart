@@ -1,9 +1,11 @@
+import 'package:booklyy/core/utilts/app_routes.dart';
 import 'package:booklyy/core/weidget/CustuomLoadingIndicator.dart';
 import 'package:booklyy/core/weidget/cusstomerror.dart';
 import 'package:booklyy/features/home/persentation/view_models/feaaturedbboks_cubit/featured_books_cubit.dart';
 import 'package:booklyy/features/home/persentation/views/weidgets/custombookinmageitem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class featuredbooklistview extends StatelessWidget {
   @override
@@ -20,10 +22,16 @@ class featuredbooklistview extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: custombookinmageitem(
-                      imageurl: state.featuredBooks[index].volumeInfo.imageLinks
-                              ?.thumbnail ??
-                          '',
+                    child: GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).push(approutes.kbookdetalisview,
+                            extra: state.featuredBooks[index]);
+                      },
+                      child: custombookinmageitem(
+                        imageurl: state.featuredBooks[index].volumeInfo
+                                .imageLinks?.thumbnail ??
+                            '',
+                      ),
                     ),
                   );
                 }),
